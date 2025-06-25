@@ -215,6 +215,7 @@ PYTHONPATH="${PYTHONPATH}:src/" poetry run accelerate launch --config_file accel
     - "lm_head"
   lora_r: 256
   lora_alpha: 256
+  enable_thinking: False # set True if the model and dataset supports thinking
   assistant_message_template: "<|start_header_id|>assistant<|end_header_id|>\n\n"
   custom_pad_token: "<|reserved_special_token_0|>"
   custom_eos_token: "<|eot_id|>"

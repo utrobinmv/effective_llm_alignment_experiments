@@ -94,7 +94,8 @@ def main():
         constructed_prompt = tokenizer.apply_chat_template(
             system_message + history,
             tokenize=False,
-            add_generation_prompt=add_gen_prompt
+            add_generation_prompt=add_gen_prompt,
+            enable_thinking=args.enable_thinking
         )
         if tokenizer.bos_token is not None:
             if constructed_prompt.startswith(tokenizer.bos_token):  # Remove extra bos token

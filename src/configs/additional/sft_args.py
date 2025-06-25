@@ -17,6 +17,9 @@ class SFTScriptArguments(CommonScriptArguments):
             "help": "Will use system prompt if there is no one in dialogue, set to None to disable"
         },
     )
+    enable_thinking: bool | None = field(
+        default=False, metadata={"help": "Do train with thinking"}
+    )
     train_only_on_completions: bool | None = field(
         default=True, metadata={"help": "Do train only on completions or not"}
     )
