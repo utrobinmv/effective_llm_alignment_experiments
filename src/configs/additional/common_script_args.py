@@ -26,9 +26,9 @@ class CommonScriptArguments:
         default="default-project",
         metadata={"help": "Name of logging project (wandb or clearml)"},
     )
-    pad_token: str | None = field(default=None, metadata={"help": "Special pad token"})
-    bos_token: str | None = field(default=None, metadata={"help": "Special bos token"})
-    eos_token: str | None = field(default=None, metadata={"help": "Special eos token"})
+    custom_pad_token: str | None = field(default=None, metadata={"help": "Special pad token"})
+    custom_bos_token: str | None = field(default=None, metadata={"help": "Special bos token"})
+    custom_eos_token: str | None = field(default=None, metadata={"help": "Special eos token"})
     chat_template: str | None = field(
         default="{% set loop_messages = messages %}{% for message in loop_messages %}{% set content = '<|start_header_id|>' + message['role'] + '<|end_header_id|>\n\n'+ message['content'] | trim + '<|eot_id|>' %}{{ content }}{% endfor %}{% if add_generation_prompt %}{{ '<|start_header_id|>assistant<|end_header_id|>\n\n' }}{% endif %}",
         metadata={"help": "Chat template for the model"},

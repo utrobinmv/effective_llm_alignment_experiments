@@ -43,6 +43,6 @@ lora_r: 256
 lora_alpha: 256
 use_rslora: True
 pad_token: "<|image_pad|>"
-eos_token: "<|im_end|>"
+custom_eos_token: "<|im_end|>"
 chat_template: "{% set loop_messages = messages %}{% for message in loop_messages %}{% set content = '<|im_start|>' + message['role'] + '\n' + message['content'] | trim + '<|im_end|>' %}{{ content }}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant<|im_end|>\n' }}{% endif %}"
 force_chat_template: True

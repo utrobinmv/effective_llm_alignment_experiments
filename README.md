@@ -191,7 +191,7 @@ PYTHONPATH="${PYTHONPATH}:src/" poetry run accelerate launch --config_file accel
   dataloader_num_workers: 2
   save_only_model: True
   generate_eval_examples: True
-  use_liger: True
+  use_liger_kernel: True
   max_seq_length: 16000
   evaluation_strategy: "steps"
   eval_steps: 400
@@ -216,8 +216,8 @@ PYTHONPATH="${PYTHONPATH}:src/" poetry run accelerate launch --config_file accel
   lora_r: 256
   lora_alpha: 256
   assistant_message_template: "<|start_header_id|>assistant<|end_header_id|>\n\n"
-  pad_token: "<|reserved_special_token_0|>"
-  eos_token: "<|eot_id|>"
+  custom_pad_token: "<|reserved_special_token_0|>"
+  custom_eos_token: "<|eot_id|>"
   chat_template: "{{ bos_token }}{% set loop_messages = messages %}{% for message in loop_messages %}{% set content = '<|start_header_id|>' + message['role'] + '<|end_header_id|>\n\n'+ message['content'] | trim + '<|eot_id|>' %}{{ content }}{% endfor %}{% if add_generation_prompt %}{{ '<|start_header_id|>assistant<|end_header_id|>\n\n' }}{% endif %}"
   force_chat_template: True
   ```

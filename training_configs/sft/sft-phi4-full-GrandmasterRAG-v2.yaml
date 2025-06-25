@@ -17,7 +17,7 @@ remove_unused_columns: False
 dataloader_num_workers: 2
 save_only_model: True
 generate_eval_examples: True
-use_liger: True
+use_liger_kernel: True
 max_seq_length: 16384
 attn_implementation: "sdpa"
 evaluation_strategy: "steps"
@@ -33,6 +33,6 @@ logging_first_step: True
 use_peft: False
 assistant_message_template: "<|im_start|>assistant<|im_sep|>"
 pad_token: "<|dummy_0|>"
-eos_token: "<|im_end|>"
+custom_eos_token: "<|im_end|>"
 chat_template: "{% set loop_messages = messages %}{% for message in loop_messages %}{% set content = '<|im_start|>' + message['role'] + '<|im_sep|>'+ message['content'] | trim + '<|im_end|>' %}{{ content }}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant<|im_sep|>' }}{% endif %}"
 force_chat_template: True

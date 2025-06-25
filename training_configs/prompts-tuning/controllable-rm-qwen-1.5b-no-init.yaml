@@ -38,6 +38,6 @@ fp16: False
 seed: 42
 logging_first_step: True
 pad_token: "<|endoftext|>"
-eos_token: "<|im_end|>"
+custom_eos_token: "<|im_end|>"
 chat_template: "{% set loop_messages = messages %}{% for message in loop_messages %}{% set content = '<|im_start|>' + message['role'] + '\n' + message['content'] | trim + '<|im_end|>' %}{{ content }}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant<|im_end|>\n' }}{% endif %}"
 force_chat_template: False

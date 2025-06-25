@@ -17,7 +17,7 @@ remove_unused_columns: False
 dataloader_num_workers: 40
 save_only_model: True
 generate_eval_examples: True
-use_liger: True
+use_liger_kernel: True
 max_seq_length: 16384
 attn_implementation: "sdpa"
 evaluation_strategy: "steps"
@@ -41,6 +41,6 @@ lora_r: 256
 lora_alpha: 256
 pad_token: "[SPEC_TOKEN_1001]"
 assistant_message_template: "<s>assistant\n"
-eos_token: "</s>"
+custom_eos_token: "</s>"
 chat_template: "{% if not add_generation_prompt is defined %}{% set add_generation_prompt = false %}{% endif %}{% for message in messages %}{{'<s>' + message['role'] + '\n' + message['content'] + '</s>' + '\n'}}{% endfor %}{% if add_generation_prompt %}{{ '<s>assistant\n' }}{% endif %}"
 force_chat_template: True

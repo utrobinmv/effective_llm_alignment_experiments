@@ -51,7 +51,7 @@ def main():
         # max_position_embeddings=sft_config.max_seq_length,
         attn_implementation=model_config.attn_implementation
     )
-    if sft_config.use_liger:
+    if sft_config.use_liger_kernel:
         from liger_kernel.transformers import apply_liger_kernel_to_llama, apply_liger_kernel_to_mistral, apply_liger_kernel_to_qwen2
         apply_liger_kernel_to_llama(
             rope=False,

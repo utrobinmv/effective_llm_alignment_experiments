@@ -48,7 +48,7 @@ lora_target_modules:
   - "down_proj"
 lora_r: 96
 lora_alpha: 96
-pad_token: "<pad>"
-eos_token: "</s>"
+custom_pad_token: "<pad>"
+custom_eos_token: "</s>"
 chat_template: "{{ bos_token }}{% set loop_messages = messages %}{% for message in loop_messages %}{% set content = '<|start_header_id|>' + message['role'] + '<|end_header_id|>\n\n'+ message['content'] | trim + '</s>' %}{{ content }}{% endfor %}{% if add_generation_prompt %}{{ '<|start_header_id|>assistant<|end_header_id|>\n\n' }}{% endif %}"
 force_chat_template: False

@@ -21,20 +21,20 @@ def setup_model_and_tokenizer(
 ):
     if max_seq_len is not None:
         tokenizer.model_max_length = max_seq_len
-    if tokenizer.eos_token != args.eos_token:
-        tokenizer.eos_token = args.eos_token
+    if tokenizer.eos_token != args.custom_eos_token:
+        tokenizer.eos_token = args.custom_eos_token
         model.config.eos_token_id = tokenizer.eos_token_id
         if model.generation_config:
             model.generation_config.eos_token_id = tokenizer.eos_token_id
     if (
-        tokenizer.bos_token is None or args.bos_token is not None
-    ) and tokenizer.bos_token != args.bos_token:
-        tokenizer.bos_token = args.bos_token
+        tokenizer.bos_token is None or args.custom_bos_token is not None
+    ) and tokenizer.bos_token != args.custom_bos_token:
+        tokenizer.bos_token = args.custom_bos_token
         model.config.bos_token_id = tokenizer.bos_token_id
         if model.generation_config:
             model.generation_config.bos_token_id = tokenizer.bos_token_id
-    if tokenizer.pad_token != args.pad_token:
-        tokenizer.pad_token = args.pad_token
+    if tokenizer.pad_token != args.custom_pad_token:
+        tokenizer.pad_token = args.custom_pad_token
         model.config.pad_token_id = tokenizer.pad_token_id
         if model.generation_config:
             model.generation_config.pad_token_id = tokenizer.pad_token_id

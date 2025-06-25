@@ -49,7 +49,7 @@ lora_r: 16
 lora_alpha: 64
 assistant_message_template: "<|im_start|>assistant\n"
 pad_token: "<|reserved_special_token_0|>"
-eos_token: "<|im_end|>"
+custom_eos_token: "<|im_end|>"
 chat_template: "{% for message in messages %}{% if message['role'] == 'user' %}{{'<|im_start|>user\n' + message['content'] + '<|im_end|>\n'}}{% elif message['role'] == 'assistant' %}{{'<|im_start|>assistant\n' + message['content'] + '<|im_end|>\n' }}{% else %}{{ '<|im_start|>system\n' + message['content'] + '<|im_end|>\n' }}{% endif %}{% endfor %}{% if add_generation_prompt %}{{ '<|im_start|>assistant\n' }}{% endif %}"
 force_chat_template: True
 model_support_system_role: False
