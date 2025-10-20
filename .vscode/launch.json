@@ -1,0 +1,54 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: run",
+            "type": "debugpy",
+            "request": "launch",
+            "envFile": "${workspaceFolder}/.env",
+            "cwd": "${workspaceFolder}",
+            "module": "accelerate.launch",
+            "args": [
+                "--config_file", "accelerate/fsdp_gradop_config.yaml",
+                "scripts/model_training/sft.py",
+                "training_configs/sft/sft-phi4-lora-GrandmasterRAG-v4.yaml"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": true
+        }, 
+        {
+            "name": "Run: run train",
+            "type": "debugpy",
+            "request": "launch",
+            "envFile": "${workspaceFolder}/.env",
+            "cwd": "${workspaceFolder}",
+            "program": "${workspaceFolder}/scripts/model_training/sft.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--config_file", "accelerate/fsdp_gradop_config.yaml",
+                "--output_dir", "/home/m/utrobin/tmp/effective_llm_alignment/sft_01",
+                "training_configs/sft/sft-phi4-lora-GrandmasterRAG-v4.yaml"
+                    ],
+            "justMyCode": false
+        },        
+        {
+            "name": "Run: train low memory",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/train.py",
+            "console": "integratedTerminal",
+            "args": [
+                "--substep", "2",
+                "--batch-size", "1",
+                "--chunk-size", "10000",
+                "--warmup", "500",
+                "--save-dir", "/home/m.utrobin/tmp/disk_train",
+                "--save-dir", "/home/m.utrobin/tmp/disk_train",
+                "/home/m.utrobin/datasets/datasets.epfl.ch1/disk-data"],
+            "justMyCode": false
+        },        
+    ]
+}

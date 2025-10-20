@@ -81,6 +81,7 @@ Run the following commands inside the project folder:
 2. Install project dependencies:
 
    ```bash
+   poetry config virtualenvs.in-project true
    poetry install
    ```
 

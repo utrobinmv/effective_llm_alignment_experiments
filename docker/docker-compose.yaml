@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: ..
+    volumes:
+      - ..:/home/app/code
+      - ~/.cache/huggingface:/home/app/.cache/huggingface
+    network_mode: bridge
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
