@@ -5,11 +5,13 @@ services:
     volumes:
       - ..:/home/app/code
       - ~/.cache/huggingface:/home/app/.cache/huggingface
+      - /home/m.utrobin/tmp/effective_llm_aligment:/home/app/tmp
+      - /home/m.utrobin/models:/home/app/models
     network_mode: bridge
     deploy:
       resources:
         reservations:
           devices:
             - driver: nvidia
-              count: 1
+              count: 2
               capabilities: [ gpu ]

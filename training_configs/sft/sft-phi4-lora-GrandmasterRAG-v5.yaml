@@ -1,4 +1,4 @@
-model_name_or_path: "/home/app/models/phi-4/"
+model_name_or_path: "checkpoints/phi4-original/phi-4/"
 dataset:
   - "Vikhrmodels/GrandMaster-PRO-MAX"
   - "Vikhrmodels/Grounded-RAG-RU-v2"
@@ -20,11 +20,12 @@ generate_eval_examples: True
 use_liger_kernel: True
 max_seq_length: 16384
 attn_implementation: "sdpa"
+evaluation_strategy: "steps"
 eval_steps: 400
 run_name: "sft-grndmrag-phi4-lora-384-qkvogudlm-v4"
-output_dir: "/home/app/tmp/effective_llm_alignment/checkpoints/sft-grndmrag-phi4-lora-384-qkvogudlm-v4"
+output_dir: "/home/m.utrobin/tmp/effective_llm_alignment/checkpoints/sft-grndmrag-phi4-lora-384-qkvogudlm-v4"
 warmup_steps: 20
-report_to: "tensorboard"
+report_to: "wandb"
 conversation_field: "conversation"
 bf16: True
 seed: 42

@@ -59,17 +59,19 @@ RUN sed -re 's/^(\#)(X11DisplayOffset)([[:space:]]+)(.*)/\2\3\4/' -i.`date -I` /
 RUN sed -re 's/^(\#)(X11UseLocalhost)([[:space:]]+)(.*)/\2\3\4/' -i.`date -I` /etc/ssh/sshd_config
 RUN sed -re 's/^(X11UseLocalhost)([[:space:]]+)yes/\1\2no/' -i.`date -I` /etc/ssh/sshd_config
 
+RUN apt-get install -y libaio-dev
+
 USER app
 
-RUN pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu121
+#RUN pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu121
 
-RUN DS_BUILD_FUSED_ADAM=1 pip install deepspeed==0.14.5
+#RUN DS_BUILD_FUSED_ADAM=1 pip install deepspeed==0.14.5
 
 WORKDIR /home/app
 
-COPY ../requirements.txt .
+#COPY ../requirements.txt .
 
-RUN pip install -r requirements.txt
+#RUN pip install -r requirements.txt
 
 USER root
 
