@@ -59,19 +59,31 @@ RUN sed -re 's/^(\#)(X11DisplayOffset)([[:space:]]+)(.*)/\2\3\4/' -i.`date -I` /
 RUN sed -re 's/^(\#)(X11UseLocalhost)([[:space:]]+)(.*)/\2\3\4/' -i.`date -I` /etc/ssh/sshd_config
 RUN sed -re 's/^(X11UseLocalhost)([[:space:]]+)yes/\1\2no/' -i.`date -I` /etc/ssh/sshd_config
 
-RUN apt-get install -y libaio-dev
+RUN apt-get install -y libaio-dev python3-dev python3-venv
 
 USER app
 
-#RUN pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu121
-
-#RUN DS_BUILD_FUSED_ADAM=1 pip install deepspeed==0.14.5
-
 WORKDIR /home/app
 
-#COPY ../requirements.txt .
+RUN python3 -m venv ~/.pyvenv/base
 
-#RUN pip install -r requirements.txt
+ENV PATH="/home/app/.pyvenv/base/bin:$PATH"
+
+RUN pip install torch==2.5.1 torchvision==0.20.1 torchaudio==2.5.1 --index-url https://download.pytorch.org/whl/cu121
+
+RUN DS_BUILD_FUSED_ADAM=1 pip install deepspeed==0.14.5
+
+COPY ../requirements_train.txt .
+
+RUN pip install -r requirements_train.txt
+
+COPY ../requirements_add.txt .
+
+RUN pip install -r requirements_add.txt
+
+RUN echo "" >> ~/.bashrc
+RUN echo "#python3.11 base" >> ~/.bashrc
+RUN echo "source ~/.pyvenv/base/bin/activate" >> ~/.bashrc
 
 USER root
 

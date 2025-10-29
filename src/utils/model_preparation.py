@@ -47,6 +47,7 @@ def setup_model_and_tokenizer(
             {"additional_special_tokens": args.added_special_tokens}
         )
         model.resize_token_embeddings(len(tokenizer))
+    # add joefox
     tokenizer.pad_token = tokenizer.eos_token
 
 
