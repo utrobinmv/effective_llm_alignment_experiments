@@ -51,7 +51,6 @@
                 "--chunk-size", "10000",
                 "--warmup", "500",
                 "--save-dir", "/home/m.utrobin/tmp/disk_train",
-                "--save-dir", "/home/m.utrobin/tmp/disk_train",
                 "/home/m.utrobin/datasets/datasets.epfl.ch1/disk-data"],
             "justMyCode": false
         },        

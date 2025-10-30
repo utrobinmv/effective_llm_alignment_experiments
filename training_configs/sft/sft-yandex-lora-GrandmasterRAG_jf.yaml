@@ -11,7 +11,6 @@ save_steps: 400
 save_total_limit: 6
 learning_rate: 0.000005
 gradient_accumulation_steps: 16
-gradient_checkpointing: True
 logging_steps: 1
 remove_unused_columns: False
 dataloader_num_workers: 40
@@ -39,7 +38,11 @@ lora_target_modules:
 lora_r: 256
 lora_alpha: 256
 pad_token: "[SPEC_TOKEN_1001]"
+custom_pad_token: "[SPEC_TOKEN_1001]"
 assistant_message_template: "<s>assistant\n"
 custom_eos_token: "</s>"
 chat_template: "{% if not add_generation_prompt is defined %}{% set add_generation_prompt = false %}{% endif %}{% for message in messages %}{{'<s>' + message['role'] + '\n' + message['content'] + '</s>' + '\n'}}{% endfor %}{% if add_generation_prompt %}{{ '<s>assistant\n' }}{% endif %}"
 force_chat_template: True
+gradient_checkpointing: False
+gradient_checkpointing_kwargs:
+  use_reentrant: False
