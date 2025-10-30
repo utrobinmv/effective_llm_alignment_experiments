@@ -87,6 +87,8 @@ RUN echo "source ~/.pyvenv/base/bin/activate" >> ~/.bashrc
 
 USER root
 
+RUN usermod --uid 777897245 app
+
 RUN chown -R app:users /home/app/
 
 CMD /usr/sbin/sshd -D

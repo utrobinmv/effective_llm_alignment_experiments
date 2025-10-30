@@ -1,6 +1,7 @@
 import multiprocessing
 import os
 import random
+import sys
 import uuid
 import warnings
 
@@ -31,6 +32,18 @@ DATASET_PROCESSING_THREADS = min(multiprocessing.cpu_count() // 2, 16)
 def main():
     parser = H4ArgumentParser((SFTScriptArguments, SFTConfig, ModelConfig))
     args, sft_config, model_config = parser.parse()
+
+    print('===============================================================')
+    print('===============================================================')
+
+    print("Скрипт был вызван с такими аргументами:")
+    for i, arg in enumerate(sys.argv):
+        print(f"  Аргумент {i}: {arg}")
+
+    print('===============================================================')
+    print('- H4ArgumentParser args:', args)
+    print('- H4ArgumentParser sft_config:', sft_config)
+    print('- H4ArgumentParser model_config:', model_config)
 
     setup_logging(logger, sft_config)
     set_seed(sft_config.seed)  # in case of new tokens added without initialize...

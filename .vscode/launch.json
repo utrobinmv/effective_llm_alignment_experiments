@@ -5,18 +5,22 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Python: run",
+            "name": "Python: run debug",
             "type": "debugpy",
             "request": "launch",
             "envFile": "${workspaceFolder}/.env",
             "cwd": "${workspaceFolder}",
-            "module": "accelerate.launch",
+            "module": "accelerate",
             "args": [
-                "--config_file", "accelerate/fsdp_gradop_config.yaml",
+                "launch"
+                "--config_file", "accelerate/single_gpu_config.yaml",
                 "scripts/model_training/sft.py",
-                "training_configs/sft/sft-phi4-lora-GrandmasterRAG-v4.yaml"
+                "training_configs/sft/sft-yandex-lora-GrandmasterRAG_jf.yaml"
             ],
             "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src:${env:PYTHONPATH}"
+            },
             "justMyCode": true
         }, 
         {
@@ -26,12 +30,13 @@
             "envFile": "${workspaceFolder}/.env",
             "cwd": "${workspaceFolder}",
             "program": "${workspaceFolder}/scripts/model_training/sft.py",
-            "console": "integratedTerminal",
             "args": [
-                "--config_file", "accelerate/fsdp_gradop_config.yaml",
-                "--output_dir", "/home/m/utrobin/tmp/effective_llm_alignment/sft_01",
-                "training_configs/sft/sft-phi4-lora-GrandmasterRAG-v4.yaml"
+                "training_configs/sft/sft-yandex-lora-GrandmasterRAG_jf.yaml"
                     ],
+            "console": "integratedTerminal",
+            "env": {
+                "PYTHONPATH": "${workspaceFolder}/src:${env:PYTHONPATH}"
+            },
             "justMyCode": false
         },        
         {

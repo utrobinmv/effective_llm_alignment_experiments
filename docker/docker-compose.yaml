@@ -4,9 +4,12 @@ services:
       context: ..
     volumes:
       - ..:/home/app/code
+      - ~/.vscode-server:/home/app/.vscode-server
       - ~/.cache/huggingface:/home/app/.cache/huggingface
       - /home/m.utrobin/tmp/effective_llm_aligment:/home/app/tmp
       - /home/m.utrobin/models:/home/app/models
+    ports:
+      - 2022:22
     network_mode: bridge
     deploy:
       resources:
